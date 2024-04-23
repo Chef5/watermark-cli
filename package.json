@@ -1,0 +1,31 @@
+{
+  "name": "watermark-cli",
+  "version": "0.0.1",
+  "description": "watermark cli",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "watermark": "bin/index.js"
+  },
+  "files": [
+    "bin"
+  ],
+  "keywords": [
+    "watermark"
+  ],
+  "author": "Chef5",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chef5/watermark-cli.git"
+  },
+  "homepage": "https://github.com/Chef5/watermark-cli#readme",
+  "license": "ISC",
+  "dependencies": {
+    "canvas": "^2.11.2",
+    "commander": "^9.4.1"
+  },
+  "devDependencies": {
+  }
+}
