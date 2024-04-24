@@ -2,7 +2,6 @@ const { createCanvas, Image } = require("canvas");
 const fs = require("fs");
 const path = require("path");
 
-// 需要匹配的图片文件后缀
 const imageExtensions = /\.(bmp|png|gif|jpe?g)$/i;
 
 const canvasTextAutoLine = (str, ctx, initX, initY, lineHeight) => {
@@ -27,7 +26,7 @@ const canvasTextAutoLine = (str, ctx, initX, initY, lineHeight) => {
 };
 
 const getImageFiles = () => {
-  const files = fs.readdirSync("./");
+  const files = fs.readdirSync(process.cwd());
   return files.filter((file) => imageExtensions.test(path.extname(file)));
 };
 
@@ -59,7 +58,7 @@ const addWaterMark = async (filePath, config) => {
         const cn = Math.ceil(cc / cellw),
           tn = Math.ceil(opt.height / cellh);
         ctx.rotate(Math.PI / (180 / opt.deg)); //图片旋转xx度
-        ctx.globalAlpha = 10 / 100; //透明度
+        ctx.globalAlpha = config.alpha / 100; //透明度
         const maxWidth = 100;
         for (let i = 0; i < tn; i++) {
           ctx.save();
@@ -93,19 +92,23 @@ const addWaterMark = async (filePath, config) => {
     img.onerror = (error) => {
       rejected(error);
     };
-    img.src = filePath;
+    img.src = fs.readFileSync(filePath);
   });
 };
 
 const watermark = async (config) => {
   const files = getImageFiles();
   if (files.length === 0) {
-    console.log("There is no image in the current directory");
+    console.error("There is no image in the current directory");
     return;
   }
   const results = await Promise.all(
     files.map(
-      async (file) => await addWaterMark(file, { ...config, name: file })
+      async (file) =>
+        await addWaterMark(file, {
+          ...config,
+          name: file,
+        })
     )
   );
   if (!fs.existsSync(config.output)) {
@@ -116,9 +119,10 @@ const watermark = async (config) => {
     }
   }
   results.forEach((buffer, index) => {
-    fs.writeFileSync(`${config.output}/${files[index]}`, buffer);
+    fs.writeFileSync(path.join(config.output, files[index]), buffer);
   });
-  console.log("Success");
+  console.log("Watermark added successfully!");
+  console.log("    Output: ", path.join(process.cwd(), config.output));
 };
 
 module.exports = {
