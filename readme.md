@@ -23,14 +23,14 @@ watermark --text 'Your watermark text'
 ## Options
 
 ```sh
-  -t, --text <char>    watermark text (default: "Watermark Test")
-  -s, --size <char>    fontsize (default: 30)
-  -c, --color <char>   color (default: "#000000")
-  -d, --deg <char>     deg (default: 45)
-  -a, --alpha <char>   alpha: 0-100 (default: 10)
-  -o, --output <char>  output dir (default: "watermark")
-  -V, --version        show version
-  -h, --help           show help
+  -t, --text <char>     watermark text (default: "Watermark Test")
+  -s, --size <number>   fontsize (default: 30)
+  -c, --color <char>    color (default: "#000000")
+  -d, --deg <number>    deg (default: 45)
+  -a, --alpha <number>  alpha: 0-100 (default: 10)
+  -o, --output <char>   output dir (default: "watermark")
+  -V, --version         show version
+  -h, --help            show help
 ```
 
 ## License
