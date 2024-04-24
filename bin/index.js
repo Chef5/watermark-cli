@@ -28,12 +28,12 @@ program
     const { text, size, color, deg, alpha, output } = options;
     const config = {
       id: new Date().getTime(),
-      watermark: text ?? defaultConfig.watermark,
-      fontSize: size ?? defaultConfig.fontSize,
-      color: color ?? defaultConfig.color,
-      deg: deg ?? defaultConfig.deg,
-      alpha: alpha ?? defaultConfig.alpha,
-      output: output ?? defaultConfig.output,
+      watermark: text,
+      fontSize: size,
+      color: color,
+      deg: deg,
+      alpha: alpha,
+      output: output,
     };
     await watermark(config);
   })

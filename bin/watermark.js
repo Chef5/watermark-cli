@@ -1,6 +1,6 @@
-const { createCanvas, Image } = require("canvas");
 const fs = require("fs");
 const path = require("path");
+const { createCanvas, Image } = require("canvas");
 
 const imageExtensions = /\.(bmp|png|gif|jpe?g)$/i;
 

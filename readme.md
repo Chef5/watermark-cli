@@ -33,6 +33,18 @@ watermark --text 'Your watermark text'
   -h, --help            show help
 ```
 
+## Pkg
+
+```
+npm run pkg
+```
+
+Download targets manually:
+
+- Download: https://github.com/vercel/pkg-fetch/releases/download/v3.4/node-v16.16.0-win-x64
+- Copy file to `C:/Users/Chef5/.pkg-cache/v3.4`
+- Rename `node-v16.16.0-win-x64` to `fetched-v16.16.0-win-x64`
+
 ## License
 
 [MIT](./LICENSE)
