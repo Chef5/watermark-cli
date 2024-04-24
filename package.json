@@ -4,7 +4,7 @@
   "description": "Quickly add text watermarks to local images",
   "main": "bin/index.js",
   "scripts": {
-    "pkg": "pkg -c package.json -t node16-win bin/index.js",
+    "pkg": "pkg -c package.json -t node16-win -C GZip bin/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
@@ -30,6 +30,7 @@
   "devDependencies": {
     "pkg": "^5.8.0"
   },
+  "pkg_fetch_version": "3.4",
   "pkg": {
     "assets": [
       "node_modules/canvas/**/*"
